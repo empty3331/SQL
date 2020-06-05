@@ -97,7 +97,7 @@ ORDER BY country_name asc;
 전화번호는 545-343-3433 과 같은 형태로 출력하시오.*/
 SELECT first_name,
        salary,
-       phone_number,
+        REPLACE(phone_number,'.','-'),
        hire_date
 FROM employees
 WHERE hire_date <= '03/12/31';
