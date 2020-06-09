@@ -130,12 +130,12 @@ SELECT de.department_id"부서번호",
        lo.city"도시",
        co.country_name"나라이름",
        re.region_name"지역이름"
-FROM departments de,employees em,employees ma,locations lo,countries co,regions re
+FROM departments de,employees em,locations lo,countries co,regions re
 WHERE em.department_id = de.department_id
 AND lo.location_id = de.location_id
 AND lo.country_id = co.country_id
 AND re.region_id = co.region_id
-AND ma.employee_id(+) = em.manager_id;
+AND ma.employee_id(+) = de.manager_id;
 
 
 /*문제9.
