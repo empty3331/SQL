@@ -91,8 +91,25 @@ ORDER BY e.salary DESC;
 각 업무(job) 별로 연봉(salary)의 총합을 구하고자 합니다. 
 연봉 총합이 가장 높은 업무부터 업무명(job_title)과 연봉 총합을 조회하시오 (19건)*/
 
-SELECT jo.job_id,
-       sum(em.salary)
-FROM jobs jo,employees em
-WHERE jo.job_id = em.job_id
-GROUP BY jo.job_id;                 
+SELECT jo.job_title,
+       jojo.salary
+FROM jobs jo,(SELECT job_id,
+                     sum(salary)salary
+              FROM employees 
+              GROUP BY job_id) jojo
+WHERE jo.job_id = jojo.job_id
+ORDER BY jojo.salary DESC;
+
+
+/*문제7.
+자신의 부서 평균 급여보다 연봉(salary)이 많은 직원의 직원번호(employee_id), 이름(first_name)과 급여(salary)을 조회하세요 
+(38건)*/
+SELECT e.employee_id,
+       e.first_name,
+       e.salary
+FROM employees e,(SELECT  avg(salary) asa,
+                          department_id 
+                FROM employees
+                GROUP BY department_id)ae
+WHERE e.department_id = ae.department_id
+AND e.salary > ae.asa;
