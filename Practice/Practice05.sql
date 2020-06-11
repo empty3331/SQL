@@ -61,7 +61,7 @@ FROM employees e,(SELECT em.employee_id emid,
                         ma.salary masa
                 FROM employees em,employees ma
                 WHERE em.manager_id = ma.employee_id
-                AND em.hire_date>'05/12/31')kiki
+                AND em.hire_date>'05/01/01')kiki
 WHERE e.employee_id = kiki.emid
 GROUP BY kiki.mafir,kiki.maid
 HAVING round(avg(e.salary),1)>=5000
