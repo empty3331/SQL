@@ -65,7 +65,7 @@ FROM employees e,(SELECT em.employee_id emid,
 WHERE e.employee_id = kiki.emid
 GROUP BY kiki.mafir,kiki.maid
 HAVING round(avg(e.salary),1)>=5000
-ORDER BY round(avg(e.salary),1) ASC;
+ORDER BY round(avg(e.salary),1) DESC;
 
 
 /*문제4.
